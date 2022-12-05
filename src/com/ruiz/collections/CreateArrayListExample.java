@@ -1,7 +1,9 @@
 package com.ruiz.collections;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class CreateArrayListExample {
 //	Key Points about ArrayList in Java:
@@ -77,6 +79,129 @@ public class CreateArrayListExample {
 		//find the size of an arrayList
 		System.out.println("Here are the top "+topCompanies.size()+" companies in the world");
 		System.out.println(topCompanies);
+		
+		//retrieve an element at a given index
+		String bestCompany = topCompanies.get(0);
+		String secondBest = topCompanies.get(1);
+		String lastCompany = topCompanies.get(topCompanies.size()-1);
+		System.out.println(bestCompany);
+		System.out.println(secondBest);
+		System.out.println(lastCompany);
+		System.out.println();
+		
+		//modify an element at a given index
+		topCompanies.set(4, "Walmart");
+		System.out.println("Modified top companies list: "+topCompanies);
+		System.out.println();
+	
+		/****************Example 4*****************/
+		/********Removing Elements from an ArrayList*********/
+		
+		List<String> programmingLanguages = new ArrayList<>();
+        programmingLanguages.add("C");
+        programmingLanguages.add("C++");
+        programmingLanguages.add("Java");
+        programmingLanguages.add("Kotlin");
+        programmingLanguages.add("Python");
+        programmingLanguages.add("Perl");
+        programmingLanguages.add("Ruby");
+
+        System.out.println("Initial List: " + programmingLanguages);
+        System.out.println();
+        //Remove element at index 5
+        programmingLanguages.remove(5);
+        System.out.println("After removing element at index 5: "+programmingLanguages);
+        System.out.println();
+        // Remove the first occurrence of the given element from the ArrayList
+        // (The remove() method returns false if the element does not exist in the ArrayList)
+        boolean isRemoved = programmingLanguages.remove("Kotlin");
+        System.out.println("After remove(\"Kotlin\"): " + isRemoved);
+        
+        //Remove all the elements the exist in a given collection
+        List<String> scriptingLanguages = new ArrayList<>();
+        scriptingLanguages.add("Python");
+        scriptingLanguages.add("Ruby");
+        scriptingLanguages.add("Perl");
+        
+        //remove scriptingLanguages from programming languages
+        programmingLanguages.removeAll(scriptingLanguages);
+        System.out.println("After removeAll(scriptingLanguages): "+programmingLanguages);
+        //Romove all elements from ArrayList
+        programmingLanguages.clear();
+        System.out.println("After clear(): "+programmingLanguages);
+        System.out.println();
+        
+		/****************Example 5*****************/
+		/********Iterating Elements from an ArrayList*********/
+        
+        List<String> tvShows =new ArrayList<>();
+        tvShows.add("Breaking Bad");
+        tvShows.add("Game of Thrones");
+        tvShows.add("Friends");
+        tvShows.add("Avatar the Last Air Bender");
+        tvShows.add("How I met your mother");
+        System.out.println("\n=== Iterate using an iterator() ===");
+        
+        Iterator<String> tvShowIterator = tvShows.iterator();
+        while(tvShowIterator.hasNext()) {
+        	String tvShow = tvShowIterator.next();
+        	System.out.println(tvShows);
+        }
+        System.out.println("==Iterate using an iterator() and forEachRemaining() method ===");
+        tvShowIterator = tvShows.iterator();
+        tvShowIterator.forEachRemaining(tvShow -> {
+           System.out.println(tvShow);
+        });
+        System.out.println("\n=== Iterate using simple for-each loop ===");
+        for(String tvShow: tvShows) {
+           System.out.println(tvShow);
+        }
+
+        System.out.println("\n=== Iterate using for loop with index ===");
+        for(int i = 0; i < tvShows.size(); i++) {
+        	System.out.println(tvShows.get(i));
+        }
+        
+        
+        System.out.println("\n=== Iterate iterator ===");
+        ListIterator<String> iterator = tvShows.listIterator();
+        System.out.println("Elements in forward direction");
+
+        System.out.println("\n====== Iterate using while loop=======");
+
+        while (iterator.hasNext())
+        {
+           System.out.println(iterator.next());
+        }
+
+        System.out.println("=========Elements in backward direction======");
+
+        while (iterator.hasPrevious())
+        {
+           System.out.println(iterator.previous());
+        }
+        /****************Example 6*****************/
+		/********Searching for Elements in an ArrayList*********/
+        List<String> names = new ArrayList<>();
+        names.add("John");
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Steve");
+        names.add("John");
+        names.add("Steve");
+        names.add("Maria");
+        
+     // Check if an ArrayList contains a given element
+        System.out.println("Does names array contain \"Bob\"? : " + names.contains("Bob"));
+        
+     // Find the index of the first occurrence of an element in an ArrayList
+        System.out.println("indexOf \"Steve\": " + names.indexOf("Steve"));
+        System.out.println("indexOf \"Mark\": " + names.indexOf("Mark"));
+
+      // Find the index of the last occurrence of an element in an ArrayList
+        System.out.println("lastIndexOf \"John\" : " + names.lastIndexOf("John"));
+        System.out.println("lastIndexOf \"Bill\" : " + names.lastIndexOf("Bill"));
+
 	}
 	
 }
